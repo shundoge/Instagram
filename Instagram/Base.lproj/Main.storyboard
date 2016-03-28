@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -199,8 +200,59 @@
                     <view key="view" contentMode="scaleToFill" id="T6C-QZ-zVR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O50-sD-6C3">
+                                <rect key="frame" x="44" y="40" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="meH-1l-RgR"/>
+                                    <constraint firstAttribute="width" constant="120" id="u87-ls-61a"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="キャプション" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Fe-bw-yze">
+                                <rect key="frame" x="174" y="130" width="386" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjS-T0-qQ4">
+                                <rect key="frame" x="150" y="220" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7gJ-Pi-02g"/>
+                                    <constraint firstAttribute="width" constant="300" id="yPD-zY-6Dh"/>
+                                </constraints>
+                                <state key="normal" title="キャンセル" backgroundImage="btn"/>
+                                <connections>
+                                    <action selector="handleCancelButton:" destination="TQd-rc-Xug" eventType="touchUpInside" id="80R-Aa-POs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef5-uT-bNV">
+                                <rect key="frame" x="150" y="180" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6uJ-bC-bXd"/>
+                                    <constraint firstAttribute="height" constant="30" id="zI7-ve-L4d"/>
+                                </constraints>
+                                <state key="normal" title="投稿" backgroundImage="btn"/>
+                                <connections>
+                                    <action selector="handlePostButton:" destination="TQd-rc-Xug" eventType="touchUpInside" id="tji-IF-14f"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CjS-T0-qQ4" firstAttribute="top" secondItem="ef5-uT-bNV" secondAttribute="bottom" constant="10" id="H3j-km-ZFz"/>
+                            <constraint firstItem="O50-sD-6C3" firstAttribute="leading" secondItem="T6C-QZ-zVR" secondAttribute="leadingMargin" constant="24" id="JVZ-20-rpi"/>
+                            <constraint firstItem="CjS-T0-qQ4" firstAttribute="centerX" secondItem="ef5-uT-bNV" secondAttribute="centerX" id="YJk-Oa-mPb"/>
+                            <constraint firstItem="0Fe-bw-yze" firstAttribute="bottom" secondItem="O50-sD-6C3" secondAttribute="bottom" id="Z8T-VB-TTs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Fe-bw-yze" secondAttribute="trailing" constant="20" id="cON-NC-oeZ"/>
+                            <constraint firstItem="0Fe-bw-yze" firstAttribute="leading" secondItem="O50-sD-6C3" secondAttribute="trailing" constant="10" id="dDj-Y4-xDB"/>
+                            <constraint firstItem="O50-sD-6C3" firstAttribute="top" secondItem="12j-8H-qXq" secondAttribute="bottom" constant="20" id="lOB-CX-rjn"/>
+                            <constraint firstItem="ef5-uT-bNV" firstAttribute="centerX" secondItem="T6C-QZ-zVR" secondAttribute="centerX" id="ndA-Nx-N90"/>
+                            <constraint firstItem="ef5-uT-bNV" firstAttribute="top" secondItem="0Fe-bw-yze" secondAttribute="bottom" constant="20" id="vma-Tf-Ae2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="O50-sD-6C3" id="ZHd-5s-Hdb"/>
+                        <outlet property="textField" destination="0Fe-bw-yze" id="cO5-9c-T3z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whi-xg-Ujd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
