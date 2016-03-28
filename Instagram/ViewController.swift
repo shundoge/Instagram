@@ -1,12 +1,6 @@
-//
-//  ViewController.swift
-//  Instagram
-//
-//  Created by TanakaShunichi on 2016/03/28.
-//  Copyright © 2016年 shunichi.tanaka. All rights reserved.
-//
 import UIKit
 import ESTabBarController
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -52,5 +46,24 @@ class ViewController: UIViewController {
             self.presentViewController(imageViewController!, animated: true, completion: nil)
             }, atIndex: 1)
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        CommonConst.FirebaseURL
+        // Firebaseを初期化して認証情報を取得する
+        let firebaseRef = Firebase(url: CommonConst.FirebaseURL)
+        let authData = firebaseRef.authData
+        
+        // 認証情報=authData が無ければログインしていない
+        if authData == nil {
+            // ログインしていなければログインの画面を表示する
+            // viewWillAppear内でpresentViewControllerを呼び出しても表示されないためメソッドが終了してから呼ばれるようにする
+            dispatch_async(dispatch_get_main_queue()) {
+                let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
+                self.presentViewController(loginViewController!, animated: true, completion: nil)
+            }
+        } else {
+            // authDataがnilでない場合は`setupTab`メソッドを呼び出してタブを表示させます。
+            setupTab()
+        }
+    }
 }
-
