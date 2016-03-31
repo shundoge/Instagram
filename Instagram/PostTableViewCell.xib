@@ -72,7 +72,7 @@
                 <outlet property="captionLabel" destination="OuC-2T-U2B" id="dOn-er-oXG"/>
                 <outlet property="dateLabel" destination="0AI-G6-7vY" id="gsa-aH-jHH"/>
                 <outlet property="likeButton" destination="hoI-07-fM8" id="i4a-6q-uoM"/>
-                <outlet property="likeLabel" destination="OuC-2T-U2B" id="gmY-00-KZs"/>
+                <outlet property="likeLabel" destination="HCq-HH-C5r" id="wQU-X1-7Gn"/>
                 <outlet property="postImageView" destination="0Q0-hX-Ln6" id="Jjm-FT-CFA"/>
             </connections>
             <point key="canvasLocation" x="306" y="323.5"/>
