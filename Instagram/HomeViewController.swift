@@ -10,7 +10,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         
+        tableView.delegate = self
+        tableView.dataSource = self
+     
         // UITableViewを準備する
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "Cell")
