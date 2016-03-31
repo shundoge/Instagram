@@ -21,7 +21,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // 要素が追加されたらpostArrayに追加してTableViewを再表示する
         firebaseRef.childByAppendingPath(CommonConst.PostPATH).observeEventType(FEventType.ChildAdded, withBlock: { snapshot in
-            
             // PostDataクラスを生成して受け取ったデータを設定する
             let postData = PostData(snapshot: snapshot, myId: self.firebaseRef.authData.uid)
             self.postArray.insert(postData, atIndex: 0)
@@ -69,7 +68,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // セルを取得してデータを設定する
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PostTableViewCell
         cell.postData = postArray[indexPath.row]
         
         // セル内のボタンのアクションをソースコードで設定する
@@ -122,8 +121,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let imageString = postData.imageString
         let name = postData.name
-        let caption = postData.caption//
-        //let caption! = ""
+        let caption = postData.caption//https://techacademy.s3.amazonaws.com/bootcamp/iphone/instagram/
         let time = (postData.date?.timeIntervalSinceReferenceDate)! as NSTimeInterval
         let likes = postData.likes
         

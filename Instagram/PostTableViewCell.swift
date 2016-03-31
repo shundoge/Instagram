@@ -1,14 +1,13 @@
 //
-//  TableViewCell.swift
+//  PostTableViewCell.swift
 //  Instagram
 //
-//  Created by TanakaShunichi on 2016/03/29.
+//  Created by TanakaShunichi on 2016/03/30.
 //  Copyright © 2016年 shunichi.tanaka. All rights reserved.
 //
-
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!

@@ -1,13 +1,13 @@
 import UIKit
 import ESTabBarController
-import Firebase
+import Firebase   // 先頭でFirebaseをimportしておく
 
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTab()
+        //setupTab()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,10 +48,13 @@ class ViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        CommonConst.FirebaseURL
+        
         // Firebaseを初期化して認証情報を取得する
         let firebaseRef = Firebase(url: CommonConst.FirebaseURL)
         let authData = firebaseRef.authData
+        
+        
+        //firebaseRef.unauth() // ← テスト用
         
         // 認証情報=authData が無ければログインしていない
         if authData == nil {

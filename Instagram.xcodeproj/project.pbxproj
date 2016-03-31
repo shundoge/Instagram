@@ -30,8 +30,8 @@
 		CF48A40B1CA964FD008A7E5A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF48A40A1CA964FD008A7E5A /* libc++.tbd */; };
 		CF5129691CA8F70C008203E4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5129681CA8F70C008203E4 /* Const.swift */; };
 		CF6913431CAA34BF0048101E /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6913421CAA34BF0048101E /* PostData.swift */; };
-		CF69134A1CAA3AA90048101E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6913481CAA3AA90048101E /* TableViewCell.swift */; };
-		CF69134B1CAA3AA90048101E /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6913491CAA3AA90048101E /* TableViewCell.xib */; };
+		CFAF269E1CAB3B7800AC64A4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF269C1CAB3B7800AC64A4 /* PostTableViewCell.swift */; };
+		CFAF269F1CAB3B7800AC64A4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAF269D1CAB3B7800AC64A4 /* PostTableViewCell.xib */; };
 		CFFEEA5E1CA82DA0002B6A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEEA5D1CA82DA0002B6A42 /* AppDelegate.swift */; };
 		CFFEEA601CA82DA0002B6A42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEEA5F1CA82DA0002B6A42 /* ViewController.swift */; };
 		CFFEEA631CA82DA0002B6A42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFFEEA611CA82DA0002B6A42 /* Main.storyboard */; };
@@ -69,8 +69,8 @@
 		CF48A40A1CA964FD008A7E5A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		CF5129681CA8F70C008203E4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		CF6913421CAA34BF0048101E /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
-		CF6913481CAA3AA90048101E /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		CF6913491CAA3AA90048101E /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		CFAF269C1CAB3B7800AC64A4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		CFAF269D1CAB3B7800AC64A4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		CFFEEA5A1CA82DA0002B6A42 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFFEEA5D1CA82DA0002B6A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFFEEA5F1CA82DA0002B6A42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 				CF22038F1CA8A71F00A1E238 /* ImageSelectViewController.swift */,
 				CF2203911CA8A76300A1E238 /* PostViewController.swift */,
 				CF2203931CA8A7AD00A1E238 /* SettingViewController.swift */,
-				CF6913481CAA3AA90048101E /* TableViewCell.swift */,
-				CF6913491CAA3AA90048101E /* TableViewCell.xib */,
+				CFAF269C1CAB3B7800AC64A4 /* PostTableViewCell.swift */,
+				CFAF269D1CAB3B7800AC64A4 /* PostTableViewCell.xib */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -243,9 +243,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF48A3EE1CA94E8E008A7E5A /* AdobeCreativeSDKCoreResources.bundle in Resources */,
-				CF69134B1CAA3AA90048101E /* TableViewCell.xib in Resources */,
 				CFFEEA681CA82DA0002B6A42 /* LaunchScreen.storyboard in Resources */,
 				CFFEEA651CA82DA0002B6A42 /* Assets.xcassets in Resources */,
+				CFAF269F1CAB3B7800AC64A4 /* PostTableViewCell.xib in Resources */,
 				CF48A3F01CA94EC3008A7E5A /* AdobeCreativeSDKImageResources.bundle in Resources */,
 				CFFEEA631CA82DA0002B6A42 /* Main.storyboard in Resources */,
 			);
@@ -306,12 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFAF269E1CAB3B7800AC64A4 /* PostTableViewCell.swift in Sources */,
 				CF2203921CA8A76300A1E238 /* PostViewController.swift in Sources */,
 				CF6913431CAA34BF0048101E /* PostData.swift in Sources */,
 				CF22038E1CA8A6A000A1E238 /* LoginViewController.swift in Sources */,
 				CFFEEA601CA82DA0002B6A42 /* ViewController.swift in Sources */,
 				CFFEEA5E1CA82DA0002B6A42 /* AppDelegate.swift in Sources */,
-				CF69134A1CAA3AA90048101E /* TableViewCell.swift in Sources */,
 				CF2203901CA8A71F00A1E238 /* ImageSelectViewController.swift in Sources */,
 				CF5129691CA8F70C008203E4 /* Const.swift in Sources */,
 				CF2203941CA8A7AD00A1E238 /* SettingViewController.swift in Sources */,

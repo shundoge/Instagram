@@ -137,7 +137,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="6Xy-kS-IIg" id="WWP-wr-hUp"/>
+                        <outlet property="tableView" destination="6Xy-kS-IIg" id="zgK-WV-5bf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NS-0b-ZOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
