@@ -137,6 +137,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let postRef = Firebase(url: CommonConst.FirebaseURL).childByAppendingPath(CommonConst.PostPATH)
         postRef.childByAppendingPath(postData.id).setValue(post)
     }
+    
+    
     func handleButtonComment(sender: UIButton, event:UIEvent) {
         //popupInput()
         let myAlert: UIAlertController = UIAlertController(title: "コメント", message: "個人情報の記述は消去されます。", preferredStyle: UIAlertControllerStyle.Alert)
