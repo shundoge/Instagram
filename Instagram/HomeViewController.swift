@@ -7,7 +7,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var firebaseRef:Firebase!
     var postArray: [PostData] = []
-    
+    var InputStr: String! = ""
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Firebaseの準備をする
         firebaseRef = Firebase(url: CommonConst.FirebaseURL)
+        //let loginUserName = ud.objectForKey(CommonConst.DisplayNameKey) as! String
         
         // 要素が追加されたらpostArrayに追加してTableViewを再表示する
         firebaseRef.childByAppendingPath(CommonConst.PostPATH).observeEventType(FEventType.ChildAdded, withBlock: { snapshot in
@@ -76,13 +77,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.postData = postArray[indexPath.row]
         
         // セル内のボタンのアクションをソースコードで設定する
-        cell.likeButton.addTarget(self, action:"handleButton:event:", forControlEvents:  UIControlEvents.TouchUpInside)
+        cell.likeButton.addTarget(self,action:#selector(HomeViewController.handleButton(_:event:)), forControlEvents:  UIControlEvents.TouchUpInside)
+        cell.commentButtonOutlet.addTarget(self,action:#selector(HomeViewController.handleButtonComment(_:event:)), forControlEvents:  UIControlEvents.TouchUpInside)
         
         // UILabelの行数が変わっている可能性があるので再描画させる
         cell.layoutIfNeeded()
-        
-        return cell
+         return cell
     }
+    
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // Auto Layoutを使ってセルの高さを動的に変更する
@@ -128,10 +130,131 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let caption = postData.caption//https://techacademy.s3.amazonaws.com/bootcamp/iphone/instagram/
         let time = (postData.date?.timeIntervalSinceReferenceDate)! as NSTimeInterval
         let likes = postData.likes
+        let comment = postData.comment
         
         // 辞書を作成してFirebaseに保存する
-        let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes]
+        let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes, "comment": comment!]
         let postRef = Firebase(url: CommonConst.FirebaseURL).childByAppendingPath(CommonConst.PostPATH)
         postRef.childByAppendingPath(postData.id).setValue(post)
     }
-}
+    func handleButtonComment(sender: UIButton, event:UIEvent) {
+        //popupInput()
+        let myAlert: UIAlertController = UIAlertController(title: "コメント", message: "個人情報の記述は消去されます。", preferredStyle: UIAlertControllerStyle.Alert)
+        //AlertにTextFieldを追加.
+        myAlert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            
+            // NotificationCenterを生成.
+            let myNotificationCenter = NSNotificationCenter.defaultCenter()
+            
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(HomeViewController.changeTextField(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
+        }
+
+        
+        
+        
+        
+        //let alert:UIAlertController = UIAlertController(title:"コメント",message: "コメントを記述してください",
+        //preferredStyle: UIAlertControllerStyle.Alert)
+        // Alert生成.
+        //var commentTextField: String!
+        
+        
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            //let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+            self.InputStr = (myAlert.textFields!.first?.text)!
+            print("OK")
+            
+            
+            
+            
+            
+            
+            
+            // タップされたセルのインデックスを求める
+            let touch = event.allTouches()?.first
+            let point = touch!.locationInView(self.tableView)
+            let indexPath = self.tableView.indexPathForRowAtPoint(point)
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            let postData = self.postArray[indexPath!.row]
+            
+            let ud = NSUserDefaults.standardUserDefaults()
+            let loginUserName = ud.objectForKey(CommonConst.DisplayNameKey) as! String
+         
+            let imageString = postData.imageString
+            let name = postData.name
+            let caption = postData.caption//https://techacademy.s3.amazonaws.com/bootcamp/iphone/instagram/
+            let time = (postData.date?.timeIntervalSinceReferenceDate)! as NSTimeInterval
+            let likes = postData.likes
+            let comment: String? = postData.comment! + "\n#" + loginUserName + "さんのコメント：" +  self.InputStr
+            let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes, "comment": comment!]
+            let postRef = Firebase(url: CommonConst.FirebaseURL).childByAppendingPath(CommonConst.PostPATH)
+            postRef.childByAppendingPath(postData.id).setValue(post)
+            //self.tableView.reloadData()
+
+            
+        }
+        
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        }
+        
+        
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+        
+        // Alertを発動する.
+        presentViewController(myAlert, animated: true, completion: nil)
+
+    }
+    func changeTextField (sender: NSNotification) {
+        let textField = sender.object as! UITextField
+        // 入力された文字を取得.
+        InputStr = textField.text
+    }
+
+    /*func popupInput(){
+        //let alert:UIAlertController = UIAlertController(title:"コメント",message: "コメントを記述してください",
+        //preferredStyle: UIAlertControllerStyle.Alert)
+        // Alert生成.
+        //var commentTextField: String!
+        let myAlert: UIAlertController = UIAlertController(title: "コメント", message: "個人情報の記述は消去されます。", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            //let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+            self.InputStr = (myAlert.textFields!.first?.text)!
+            print("OK")
+            
+
+        }
+        
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        }
+        
+         //AlertにTextFieldを追加.
+        myAlert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            
+            // NotificationCenterを生成.
+            let myNotificationCenter = NSNotificationCenter.defaultCenter()
+            
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(HomeViewController.changeTextField(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
+        }
+        
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+        
+        // Alertを発動する.
+        presentViewController(myAlert, animated: true, completion: nil)
+    }*/
+    
+ }

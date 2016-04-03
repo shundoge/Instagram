@@ -14,6 +14,18 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    
+    @IBOutlet weak var commentButtonOutlet: UIButton!
+   /* @IBAction func commentButton(sender: AnyObject) {
+        var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        //appDelegate.globalimage = sender.postImageView as UIImageView
+        
+        //let selectedImage : UIImageView = sender.postImageView as! UIImageView
+        // 遷移するViewを定義する.
+        let mySecondViewController : UIViewController! = self.window?.rootViewController!.storyboard!.instantiateViewControllerWithIdentifier("Comment")
+        self.window?.rootViewController!.presentViewController(mySecondViewController as UIViewController, animated: true, completion: nil)
+     }*/
     
     var postData: PostData?
     
@@ -32,11 +44,11 @@ class PostTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         
         postImageView.image = postData!.image
-        captionLabel.text = "\(postData!.name!) : \(postData!.caption!)"
+        captionLabel.text = "(投稿者)\(postData!.name!) : \n\(postData!.caption!)"
         
         let likeNumber = postData!.likes.count
         likeLabel.text = "\(likeNumber)"
-        
+        commentLabel.text = postData!.comment
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP")
         formatter.dateFormat = "yyyy-MM-dd HH:mm"

@@ -28,12 +28,12 @@ class PostViewController: UIViewController {
         // NSUserDfaultsから表示名を取得する
         let ud = NSUserDefaults.standardUserDefaults()
         let name = ud.objectForKey(CommonConst.DisplayNameKey) as! String
-        
+        let comment = ""
         // 時間を取得する
         let time = NSDate.timeIntervalSinceReferenceDate()
         
         // 辞書を作成してFirebaseに保存する
-        let postData = ["caption": textField.text!, "image": imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength), "name": name, "time": time]
+        let postData = ["caption": textField.text!, "image": imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength), "name": name, "time": time, "comment": comment]
         postRef.childByAutoId().setValue(postData)
         
         // HUDで投稿完了を表示する

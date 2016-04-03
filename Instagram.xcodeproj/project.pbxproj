@@ -29,6 +29,7 @@
 		CF48A4081CA95135008A7E5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF48A4071CA95135008A7E5A /* StoreKit.framework */; };
 		CF48A40B1CA964FD008A7E5A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF48A40A1CA964FD008A7E5A /* libc++.tbd */; };
 		CF5129691CA8F70C008203E4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5129681CA8F70C008203E4 /* Const.swift */; };
+		CF686A9A1CAF741D0067E2C2 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF686A991CAF741D0067E2C2 /* CommentViewController.swift */; };
 		CF6913431CAA34BF0048101E /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6913421CAA34BF0048101E /* PostData.swift */; };
 		CFAF269E1CAB3B7800AC64A4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF269C1CAB3B7800AC64A4 /* PostTableViewCell.swift */; };
 		CFAF269F1CAB3B7800AC64A4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAF269D1CAB3B7800AC64A4 /* PostTableViewCell.xib */; };
@@ -68,6 +69,7 @@
 		CF48A4091CA95333008A7E5A /* Instagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Instagram-Bridging-Header.h"; path = "Instagram/Instagram-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF48A40A1CA964FD008A7E5A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		CF5129681CA8F70C008203E4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		CF686A991CAF741D0067E2C2 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		CF6913421CAA34BF0048101E /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		CFAF269C1CAB3B7800AC64A4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CFAF269D1CAB3B7800AC64A4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				CFFEEA5F1CA82DA0002B6A42 /* ViewController.swift */,
 				CF5129681CA8F70C008203E4 /* Const.swift */,
 				CFFEEA611CA82DA0002B6A42 /* Main.storyboard */,
+				CF686A991CAF741D0067E2C2 /* CommentViewController.swift */,
 				CF6913421CAA34BF0048101E /* PostData.swift */,
 				CFFEEA641CA82DA0002B6A42 /* Assets.xcassets */,
 				CFFEEA661CA82DA0002B6A42 /* LaunchScreen.storyboard */,
@@ -316,6 +319,7 @@
 				CF5129691CA8F70C008203E4 /* Const.swift in Sources */,
 				CF2203941CA8A7AD00A1E238 /* SettingViewController.swift in Sources */,
 				CF22038C1CA8A58C00A1E238 /* HomeViewController.swift in Sources */,
+				CF686A9A1CAF741D0067E2C2 /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
